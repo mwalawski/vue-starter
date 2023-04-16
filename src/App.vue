@@ -3,7 +3,7 @@
     <h1>Witaj w systemie do zapisów na zajęcia</h1>
 <!--    <h1>Twój e-mail to {{ email }}</h1>-->
 
-      <div v-if=!logInActive>Zaloguj się e-mailem <input type="email" v-model="email"> <button @click="logIn()">Wcho</button></div>
+      <div v-if=!logInActive>Zaloguj się e-mailem <input type="email" v-model="email"> <button @click="logIn()">Wchodzę</button></div>
       <div v-else><h2>Witaj {{email}}!</h2>
           <button @click="logOut()">Wyloguj</button>
       </div>
