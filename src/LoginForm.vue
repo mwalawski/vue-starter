@@ -10,7 +10,7 @@
     export default {
         data() {
             return {
-                email: ''
+                email: 'test@email.com'
             }
         },
         methods: {
