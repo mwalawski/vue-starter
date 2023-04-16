@@ -7,12 +7,12 @@
       <div v-else><h2>Witaj {{email}}!</h2>
           <button @click="logOut()">Wyloguj</button>
       </div>
+      <div v-if=emailPrompt>{{emailPrompt}}</div>
 
-<!--    <div v-if="!email.includes('@')">Twój email nie ma małpy!</div>-->
+    <div v-if="!email.includes('@')">Twój email nie ma małpy!</div>
 <!--    <div v-else-if="email.length < 10">Ale masz krótki adres! {{email.length}} znaków to za mało</div>-->
 <!--    <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>-->
 <!--    <div v-else>Twój adres e-mail jest stanowczo za długi. Ma {{ email.length }} znaków</div>-->
-
   </div>
 
 </template>
@@ -23,15 +23,28 @@ export default {
     return {
       email: 'moj@email.com',
       password: '',
-      logInActive: false
+      logInActive: false,
+      emailPrompt: null,
     };
   },
   methods: {
     logIn() {
       this.logInActive = true;
+      this.emailPrompt = null;
+      this.validateEmail();
     },
     logOut() {
         this.logInActive = false;
+        this.emailPrompt = null;
+    },
+    validateEmail() {
+      if (this.email.length < 10){
+        this.emailPrompt = "Ale masz krótki adres!"
+      } else if (this.email.length < 15) {
+        this.emailPrompt = "Twój adres e-mail jest w sam raz"
+      } else {
+        this.emailPrompt = "Twój adres e-mail jest stanowczo za długi."
+      }
     }
   }
 }
